@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'entregable3.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'entrega4bk',
-        'USER': 'root',
-        'PASSWORD':'Carlos.1999',
-        'HOST':'127.0.0.1',
-        'PORT':'3306'
+        'ENGINE': os.environ.get('DJANGO_DB_ENGINE','django.db.backends.mysql'),
+        'NAME':  os.environ.get('DJANGO_DB_NAME','entrega4bk'),
+        'USER': os.environ.get('DJANGO_DB_USER','root'),
+        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD','Carlos.1999'),
+        'HOST': os.environ.get('DJANGO_DB_HOST','127.0.0.1'),
+        'PORT': os.environ.get('DJANGO_DB_PORT','3306'),
     }
 }
 
