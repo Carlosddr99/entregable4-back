@@ -38,10 +38,14 @@ class ProfesorRetrieveAPIView(generics.RetrieveAPIView):
 class ProfesorCreateAPIView(generics.ListCreateAPIView):  
     queryset = Profesor.objects.all()
     serializer_class = ProfesorSerializer
+    authentication_classes =[authentication.SessionAuthentication]
+    permission_classes = [permissions.DjangoModelPermissions]
 
 class ProfesorUpdateAPIView(generics.UpdateAPIView):
     queryset = Profesor.objects.all()
     serializer_class = ProfesorSerializer
+    authentication_classes =[authentication.SessionAuthentication]
+    permission_classes = [permissions.DjangoModelPermissions]
 
 
 class ProfesorDestroyAPIView(generics.DestroyAPIView):
